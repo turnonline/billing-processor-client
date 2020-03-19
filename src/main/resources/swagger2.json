@@ -319,7 +319,7 @@
             "properties": {
                 "billNumber": {
                     "type": "string",
-                    "description": "Bill order number, or in case of incoming invoice an invoice number"
+                    "description": "Bill (receipt) number, or in case of incoming invoice an invoice number"
                 },
                 "createdDate": {
                     "type": "string",
@@ -363,7 +363,7 @@
                     "type": "string",
                     "description": "Type of document",
                     "enum": [
-                        "CASH_REGISTER_DOCUMENT",
+                        "RECEIPT",
                         "INCOMING_INVOICE"
                     ]
                 },
@@ -378,7 +378,8 @@
                         "$ref": "#/definitions/Scan"
                     }
                 }
-            }
+            },
+            "description": "A document that represent a scanned receipt or incoming invoice. The content of a bill (receipt) interpreted as data."
         },
         "BillCollection": {
             "type": "object",
@@ -398,7 +399,7 @@
                 "amount": {
                     "type": "number",
                     "format": "double",
-                    "description": "The requested amount (quantity) of this item to be invoiced."
+                    "description": "The amount (quantity) of the single item at bill."
                 },
                 "currency": {
                     "type": "string",
@@ -436,7 +437,8 @@
                     "type": "string",
                     "description": "The code from the billing unit codebook - unit of measure at invoice."
                 }
-            }
+            },
+            "description": "The single row of the pricing item at a bill."
         },
         "Error": {
             "type": "object",
@@ -505,15 +507,15 @@
                 "order": {
                     "type": "integer",
                     "format": "int32",
-                    "description": "The order number how scanned image should be organised. If it's not supplied by the client, it will be numbered in the order as it was provided. Order number must be unique within list."
+                    "description": "The order number how a scanned receipt should be organised. If it's not supplied by the client, it will be numbered in the order as it was provided. Order number must be unique within list."
                 },
                 "servingUrl": {
                     "type": "string",
-                    "description": "The full URL of the scanned image served from the content delivery network (CDN). Provided by the service once an image ('storageName') has been uploaded."
+                    "description": "The full URL of the scanned receipt served from the content delivery network (CDN). Provided by the service once an image ('storageName') has been uploaded."
                 },
                 "storageName": {
                     "type": "string",
-                    "description": "The full path to the scanned image. It's an identification in the underlying storage. This property acts as a list item identification."
+                    "description": "The full path to the scanned receipt. It's an identification in the underlying storage. This property acts as a list item identification."
                 }
             }
         },
