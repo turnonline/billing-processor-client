@@ -369,9 +369,9 @@
           "format" : "int64",
           "description" : "The unique bill identification."
         },
-        "itemName" : {
+        "description" : {
           "type" : "string",
-          "description" : "Bill name"
+          "description" : "Bill description"
         },
         "items" : {
           "type" : "array",
