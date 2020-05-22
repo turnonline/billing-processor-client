@@ -396,6 +396,10 @@
         "Bill": {
             "type": "object",
             "properties": {
+                "approved": {
+                    "type": "boolean",
+                    "description": "The indication whether the bill has been approved to be sent to accountant or not."
+                },
                 "billNumber": {
                     "type": "string",
                     "description": "Bill (receipt) number, or in case of incoming invoice an invoice number"
@@ -405,19 +409,23 @@
                     "format": "date-time",
                     "description": "A date when bill record has been created. Managed solely by the service. RFC 3339"
                 },
+                "currency": {
+                    "type": "string",
+                    "description": "The currency alphabetic code based on the ISO 4217. If not set, the account’s default currency will be set."
+                },
                 "dateOfIssue": {
                     "type": "string",
                     "format": "date-time",
                     "description": "The date when the cash register document has been issued. If not provided, the current date will be used. RFC 3339"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "Bill description"
+                },
                 "id": {
                     "type": "integer",
                     "format": "int64",
                     "description": "The unique bill identification."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Bill description"
                 },
                 "items": {
                     "type": "array",
@@ -430,6 +438,13 @@
                     "format": "date-time",
                     "description": "The date of the last modification of the bill resource values. Managed solely by the service. RFC 3339"
                 },
+                "scans": {
+                    "type": "array",
+                    "description": "The list of scans associated with this bill.",
+                    "items": {
+                        "$ref": "#/definitions/Scan"
+                    }
+                },
                 "supplier": {
                     "$ref": "#/definitions/Supplier"
                 },
@@ -438,28 +453,18 @@
                     "format": "double",
                     "description": "The total price as a sum of all checked in bill items and its amount including target rounding mode. Including VAT."
                 },
+                "transactionId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "The identification of the transaction within Product Billing service associated with this bill if it has been already matched."
+                },
                 "type": {
                     "type": "string",
-                    "description": "Type of document",
+                    "description": "Type of the bill document.",
                     "enum": [
                         "RECEIPT",
-                        "INCOMING_INVOICE"
+                        "INVOICE"
                     ]
-                },
-                "currency": {
-                    "type": "string",
-                    "description": "The currency alphabetic code based on the ISO 4217. If not set, the account’s default currency will be set."
-                },
-                "scans": {
-                    "type": "array",
-                    "description": "The list of scans associated with this bill.",
-                    "items": {
-                        "$ref": "#/definitions/Scan"
-                    }
-                },
-                "approved": {
-                    "type": "boolean",
-                    "description": "Flag to mark bill as approved to accountant. Value is read only."
                 }
             },
             "description": "A document that represent a scanned receipt or incoming invoice. The content of a bill (receipt) interpreted as data."
@@ -506,15 +511,15 @@
                     "type": "string",
                     "description": "Billing item name"
                 },
-                "priceExclVat": {
-                    "type": "number",
-                    "format": "double",
-                    "description": "The product price for a single unit (meaning amount 1.0 as a quantity). The price is excluding VAT in case company is VAT payer, otherwise price is final."
-                },
                 "parentKey": {
                     "type": "string",
                     "description": "The unique identification incl. the parent Bill identification.",
                     "example": "Bill:5073302584148229::BillItem:5008221488481233"
+                },
+                "priceExclVat": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The product price for a single unit (meaning amount 1.0 as a quantity). The price is excluding VAT in case company is VAT payer, otherwise price is final."
                 },
                 "unit": {
                     "type": "string",
@@ -609,25 +614,13 @@
                     "type": "string",
                     "description": "Supplier business name."
                 },
-                "companyId": {
-                    "type": "string",
-                    "description": "Supplier business identification number."
-                },
-                "taxId": {
-                    "type": "string",
-                    "description": "Supplier tax payer identification number."
-                },
-                "vatId": {
-                    "type": "string",
-                    "description": "Supplier vat payer identification number."
-                },
-                "street": {
-                    "type": "string",
-                    "description": "The street and street number."
-                },
                 "city": {
                     "type": "string",
                     "description": "The address city."
+                },
+                "companyId": {
+                    "type": "string",
+                    "description": "Supplier business identification number."
                 },
                 "country": {
                     "type": "string",
@@ -636,6 +629,18 @@
                 "postcode": {
                     "type": "string",
                     "description": "The address post code."
+                },
+                "street": {
+                    "type": "string",
+                    "description": "The street and street number."
+                },
+                "taxId": {
+                    "type": "string",
+                    "description": "Supplier tax payer identification number."
+                },
+                "vatId": {
+                    "type": "string",
+                    "description": "Supplier vat payer identification number."
                 }
             }
         }

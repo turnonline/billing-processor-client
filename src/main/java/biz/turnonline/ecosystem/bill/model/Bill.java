@@ -48,6 +48,12 @@ public final class Bill
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
+    private java.lang.Boolean approved;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
     private java.lang.String billNumber;
 
     /**
@@ -72,14 +78,14 @@ public final class Bill
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    @com.google.api.client.json.JsonString
-    private java.lang.Long id;
+    private java.lang.String description;
 
     /**
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String itemName;
+    @com.google.api.client.json.JsonString
+    private java.lang.Long id;
 
     /**
      * The value may be {@code null}.
@@ -115,7 +121,31 @@ public final class Bill
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
+    @com.google.api.client.json.JsonString
+    private java.lang.Long transactionId;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
     private java.lang.String type;
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.Boolean getApproved()
+    {
+        return approved;
+    }
+
+    /**
+     * @param approved approved or {@code null} for none
+     */
+    public Bill setApproved( java.lang.Boolean approved )
+    {
+        this.approved = approved;
+        return this;
+    }
 
     /**
      * @return value or {@code null} for none
@@ -188,6 +218,23 @@ public final class Bill
     /**
      * @return value or {@code null} for none
      */
+    public java.lang.String getDescription()
+    {
+        return description;
+    }
+
+    /**
+     * @param description description or {@code null} for none
+     */
+    public Bill setDescription( java.lang.String description )
+    {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
     public java.lang.Long getId()
     {
         return id;
@@ -199,23 +246,6 @@ public final class Bill
     public Bill setId( java.lang.Long id )
     {
         this.id = id;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.String getItemName()
-    {
-        return itemName;
-    }
-
-    /**
-     * @param itemName itemName or {@code null} for none
-     */
-    public Bill setItemName( java.lang.String itemName )
-    {
-        this.itemName = itemName;
         return this;
     }
 
@@ -301,6 +331,23 @@ public final class Bill
     public Bill setTotalPrice( java.lang.Double totalPrice )
     {
         this.totalPrice = totalPrice;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.lang.Long getTransactionId()
+    {
+        return transactionId;
+    }
+
+    /**
+     * @param transactionId transactionId or {@code null} for none
+     */
+    public Bill setTransactionId( java.lang.Long transactionId )
+    {
+        this.transactionId = transactionId;
         return this;
     }
 
