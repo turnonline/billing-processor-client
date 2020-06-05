@@ -420,7 +420,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Bill description"
+                    "description": "Arbitrary description of the bill provided by the user."
                 },
                 "id": {
                     "type": "integer",
