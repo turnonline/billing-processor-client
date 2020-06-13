@@ -106,6 +106,13 @@
                         "schema": {
                             "$ref": "#/definitions/Bill"
                         }
+                    },
+                    {
+                        "name": "vnd.turnon.cloud.transaction-hashcode",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "description": "The unique bank transaction hash code as the source of data for a new bill record. If present, it helps to avoid double submission of the same request."
                     }
                 ],
                 "responses": {
