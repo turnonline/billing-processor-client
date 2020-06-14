@@ -108,7 +108,7 @@
                         }
                     },
                     {
-                        "name": "vnd.turnon.cloud.transaction-hashcode",
+                        "name": "vnd.turnon.cloud.request-hashcode",
                         "in": "header",
                         "required": false,
                         "type": "string",
