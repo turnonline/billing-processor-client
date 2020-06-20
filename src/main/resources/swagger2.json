@@ -112,7 +112,7 @@
                         "in": "header",
                         "required": false,
                         "type": "string",
-                        "description": "The unique bank transaction hash code as the source of data for a new bill record. If present, it helps to avoid double submission of the same request."
+                        "description": "The unique hash code of the new record. If present, it helps to avoid double submission of the same request."
                     }
                 ],
                 "responses": {
@@ -458,7 +458,20 @@
                 "totalPrice": {
                     "type": "number",
                     "format": "double",
-                    "description": "The total price as a sum of all checked in bill items and its amount including target rounding mode. Including VAT."
+                    "description": "The total price as stated at bill.",
+                    "default": 0
+                },
+                "totalVat": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The total VAT as stated at bill (in case the supplier is a VAT payer).",
+                    "default": 0
+                },
+                "totalVatBase": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The total VAT base as stated at bill (in case the supplier is a VAT payer).",
+                    "default": 0
                 },
                 "transactionId": {
                     "type": "integer",
