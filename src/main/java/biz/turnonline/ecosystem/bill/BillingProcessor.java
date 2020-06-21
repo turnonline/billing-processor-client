@@ -277,6 +277,22 @@ public class BillingProcessor
     {
 
         /**
+         * Create a request for the method "bills.approve".
+         * <p>
+         * This request holds the parameters needed by the bill server.  After setting any optional
+         * parameters, call the {@link Approve#execute()} method to invoke the remote operation.
+         *
+         * @param billId
+         * @return the request
+         */
+        public Approve approve( java.lang.Long billId ) throws java.io.IOException
+        {
+            Approve result = new Approve( billId );
+            initialize( result );
+            return result;
+        }
+
+        /**
          * Create a request for the method "bills.delete".
          * <p>
          * This request holds the parameters needed by the bill server.  After setting any optional
@@ -355,6 +371,96 @@ public class BillingProcessor
             Update result = new Update( billId, content );
             initialize( result );
             return result;
+        }
+
+        public class Approve
+                extends BillingProcessorRequest<Void>
+        {
+
+            private static final String REST_PATH = "bills/{bill_id}/approve";
+
+            @com.google.api.client.util.Key( "bill_id" )
+            private java.lang.Long billId;
+
+            /**
+             * Create a request for the method "bills.approve".
+             * <p>
+             * This request holds the parameters needed by the the bill server.  After setting any optional
+             * parameters, call the {@link Approve#execute()} method to invoke the remote operation. <p>
+             * {@link
+             * Approve#initialize(com.google.api.client.googleapis.services.AbstractGoogleClientRequest)} must
+             * be called to initialize this instance immediately after invoking the constructor. </p>
+             *
+             * @param billId
+             * @since 1.13
+             */
+            protected Approve( java.lang.Long billId )
+            {
+                super( BillingProcessor.this, "POST", REST_PATH, null, Void.class );
+                this.billId = com.google.api.client.util.Preconditions.checkNotNull( billId, "Required parameter billId must be specified." );
+            }
+
+            @Override
+            public Approve setAlt( java.lang.String alt )
+            {
+                return ( Approve ) super.setAlt( alt );
+            }
+
+            @Override
+            public Approve setFields( java.lang.String fields )
+            {
+                return ( Approve ) super.setFields( fields );
+            }
+
+            @Override
+            public Approve setKey( java.lang.String key )
+            {
+                return ( Approve ) super.setKey( key );
+            }
+
+            @Override
+            public Approve setOauthToken( java.lang.String oauthToken )
+            {
+                return ( Approve ) super.setOauthToken( oauthToken );
+            }
+
+            @Override
+            public Approve setPrettyPrint( java.lang.Boolean prettyPrint )
+            {
+                return ( Approve ) super.setPrettyPrint( prettyPrint );
+            }
+
+            @Override
+            public Approve setQuotaUser( java.lang.String quotaUser )
+            {
+                return ( Approve ) super.setQuotaUser( quotaUser );
+            }
+
+            @Override
+            public Approve setUserIp( java.lang.String userIp )
+            {
+                return ( Approve ) super.setUserIp( userIp );
+            }
+
+            /**
+             *
+             */
+            public java.lang.Long getBillId()
+            {
+                return billId;
+            }
+
+            public Approve setBillId( java.lang.Long billId )
+            {
+                this.billId = billId;
+                return this;
+            }
+
+            @Override
+            public Approve set( String parameterName, Object value )
+            {
+                return ( Approve ) super.set( parameterName, value );
+            }
         }
 
         public class Delete

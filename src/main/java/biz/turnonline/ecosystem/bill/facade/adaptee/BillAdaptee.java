@@ -82,7 +82,16 @@ public class BillAdaptee
                                  @Nullable Identifier parentKey,
                                  @Nullable MediaProvider provider ) throws IOException
     {
-        return client().bills().insert( resource );
+        if ( parentKey != null
+                && parentKey.hasController()
+                && "approve".equalsIgnoreCase( parentKey.getController() ) )
+        {
+            return client().bills().approve( parentKey.getLong() );
+        }
+        else
+        {
+            return client().bills().insert( resource );
+        }
     }
 
     @Override

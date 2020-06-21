@@ -485,6 +485,13 @@
                         "RECEIPT",
                         "INVOICE"
                     ]
+                },
+                "vatRows": {
+                    "type": "array",
+                    "description": "Summary per VAT rate.",
+                    "items": {
+                        "$ref": "#/definitions/VatRateRow"
+                    }
                 }
             },
             "description": "A document that represent a scanned receipt or incoming invoice. The content of a bill (receipt) interpreted as data."
@@ -663,6 +670,32 @@
                     "description": "Supplier vat payer identification number."
                 }
             }
+        },
+        "VatRateRow": {
+            "type": "object",
+            "properties": {
+                "priceInclVat": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The total price per rate as stated at bill."
+                },
+                "vat": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The sum of VAT per rate as stated at bill."
+                },
+                "vatBase": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The sum of VAT base per rate as stated at bill."
+                },
+                "vatRate": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "VAT rate (in percentage) as stated at bill."
+                }
+            },
+            "description": "Summary per VAT rate."
         }
     }
 }

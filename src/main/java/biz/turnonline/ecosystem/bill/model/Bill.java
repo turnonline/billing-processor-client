@@ -30,6 +30,20 @@ package biz.turnonline.ecosystem.bill.model;
 public final class Bill
         extends com.google.api.client.json.GenericJson
 {
+    static
+    {
+        // hack to force ProGuard to consider BillItem used, since otherwise it would be stripped out
+        // see https://github.com/google/google-api-java-client/issues/543
+        com.google.api.client.util.Data.nullOf( BillItem.class );
+    }
+
+    static
+    {
+        // hack to force ProGuard to consider Scan used, since otherwise it would be stripped out
+        // see https://github.com/google/google-api-java-client/issues/543
+        com.google.api.client.util.Data.nullOf( Scan.class );
+    }
+
     /**
      * The value may be {@code null}.
      */
@@ -79,13 +93,6 @@ public final class Bill
     @com.google.api.client.util.Key
     private java.util.List<BillItem> items;
 
-    static
-    {
-        // hack to force ProGuard to consider BillItem used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( BillItem.class );
-    }
-
     /**
      * The value may be {@code null}.
      */
@@ -97,13 +104,6 @@ public final class Bill
      */
     @com.google.api.client.util.Key
     private java.util.List<Scan> scans;
-
-    static
-    {
-        // hack to force ProGuard to consider Scan used, since otherwise it would be stripped out
-        // see https://github.com/google/google-api-java-client/issues/543
-        com.google.api.client.util.Data.nullOf( Scan.class );
-    }
 
     /**
      * The value may be {@code null}.
@@ -141,6 +141,12 @@ public final class Bill
      */
     @com.google.api.client.util.Key
     private java.lang.String type;
+
+    /**
+     * The value may be {@code null}.
+     */
+    @com.google.api.client.util.Key
+    private java.util.List<VatRateRow> vatRows;
 
     /**
      * @return value or {@code null} for none
@@ -411,6 +417,23 @@ public final class Bill
     public Bill setType( java.lang.String type )
     {
         this.type = type;
+        return this;
+    }
+
+    /**
+     * @return value or {@code null} for none
+     */
+    public java.util.List<VatRateRow> getVatRows()
+    {
+        return vatRows;
+    }
+
+    /**
+     * @param vatRows vatRows or {@code null} for none
+     */
+    public Bill setVatRows( java.util.List<VatRateRow> vatRows )
+    {
+        this.vatRows = vatRows;
         return this;
     }
 
