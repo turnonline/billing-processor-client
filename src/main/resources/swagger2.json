@@ -516,10 +516,6 @@
                     "format": "double",
                     "description": "The amount (quantity) of the single item at bill."
                 },
-                "currency": {
-                    "type": "string",
-                    "description": "The currency alphabetic code based on the ISO 4217. If not set, the account’s default currency will be set."
-                },
                 "finalPrice": {
                     "type": "number",
                     "format": "double",

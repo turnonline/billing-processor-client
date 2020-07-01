@@ -40,12 +40,6 @@ public final class BillItem
      * The value may be {@code null}.
      */
     @com.google.api.client.util.Key
-    private java.lang.String currency;
-
-    /**
-     * The value may be {@code null}.
-     */
-    @com.google.api.client.util.Key
     private java.lang.Double finalPrice;
 
     /**
@@ -99,23 +93,6 @@ public final class BillItem
     public BillItem setAmount( java.lang.Double amount )
     {
         this.amount = amount;
-        return this;
-    }
-
-    /**
-     * @return value or {@code null} for none
-     */
-    public java.lang.String getCurrency()
-    {
-        return currency;
-    }
-
-    /**
-     * @param currency currency or {@code null} for none
-     */
-    public BillItem setCurrency( java.lang.String currency )
-    {
-        this.currency = currency;
         return this;
     }
 
