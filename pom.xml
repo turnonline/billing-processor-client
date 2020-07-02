@@ -27,7 +27,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>biz.turnonline.ecosystem</groupId>
     <artifactId>turnonline-billing-processor-client</artifactId>
-    <version>0.7-SNAPSHOT</version>
+    <version>0.7</version>
     <packaging>jar</packaging>
     <name>Billing Processor Java Client</name>
     <description>
@@ -38,7 +38,7 @@
         <connection>scm:git:[fetch=]git@github.com:turnonline/billing-processor-client.git</connection>
         <developerConnection>scm:git:[push=]git@github.com:turnonline/billing-processor-client.git</developerConnection>
         <url>https://github.com/turnonline/billing-processor-client</url>
-        <tag>HEAD</tag>
+        <tag>turnonline-billing-processor-client-0.7</tag>
     </scm>
 
     <issueManagement>
