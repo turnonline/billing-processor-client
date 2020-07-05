@@ -437,7 +437,7 @@
                 "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/BillItem"
+                        "$ref": "#/definitions/Item"
                     }
                 },
                 "modificationDate": {
@@ -508,22 +508,18 @@
                 }
             }
         },
-        "BillItem": {
+        "Item": {
             "type": "object",
             "properties": {
-                "amount": {
-                    "type": "number",
-                    "format": "double",
-                    "description": "The amount (quantity) of the single item at bill."
-                },
                 "finalPrice": {
                     "type": "number",
                     "format": "double",
-                    "description": "The final price including VAT as a result of the calculation of the item price excluding VAT (VAT base), selected VAT and amount."
+                    "description": "The final price including VAT."
                 },
-                "finalVat": {
-                    "type": "string",
-                    "description": "The context sensitive (customer country etc) VAT code, taken from the VAT rate code book."
+                "finalVatAmount": {
+                    "type": "number",
+                    "format": "double",
+                    "description": "The final amount of VAT."
                 },
                 "id": {
                     "type": "integer",
@@ -532,24 +528,25 @@
                 },
                 "itemName": {
                     "type": "string",
-                    "description": "Billing item name"
+                    "description": "Single item name"
                 },
                 "parentKey": {
                     "type": "string",
                     "description": "The unique identification incl. the parent Bill identification.",
-                    "example": "Bill:5073302584148229::BillItem:5008221488481233"
+                    "example": "Bill:5073302584148229::Item:5008221488481233"
                 },
                 "priceExclVat": {
                     "type": "number",
                     "format": "double",
-                    "description": "The product price for a single unit (meaning amount 1.0 as a quantity). The price is excluding VAT in case company is VAT payer, otherwise price is final."
+                    "description": "The price excluding VAT in case company is VAT payer, otherwise price is final."
                 },
-                "unit": {
+                "vat": {
                     "type": "string",
-                    "description": "The code from the billing unit codebook - unit of measure at invoice."
+                    "description": "The VAT code taken from the VAT rate code book.",
+                    "default": "STANDARD"
                 }
             },
-            "description": "The single row of the pricing item at a bill."
+            "description": "The single row (optional) of the item."
         },
         "Error": {
             "type": "object",
