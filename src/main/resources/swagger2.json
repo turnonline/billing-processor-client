@@ -108,7 +108,7 @@
                         }
                     },
                     {
-                        "name": "vnd.turnon.cloud.request-hashcode",
+                        "name": "Vnd-ConnecSys-Request-hashcode",
                         "in": "header",
                         "required": false,
                         "type": "string",
